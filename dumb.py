@@ -5,6 +5,7 @@ import pygame
 #My first pygame project. To run...
 #sudo apt install python3-pygame
 #python3 dumb.py
+print("Press 'r' to restart!!")
 pygame.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 60)
 screen_width = 1280
@@ -13,14 +14,14 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 clock = pygame.time.Clock()
 
-l,t,w,h = 25,25,150,150
-rectm = pygame.Rect(l,t,w,h)
 rects = pygame.Rect(screen_width-330,80,290,80)
 rectm_colours = [(255,0,0), (0,255,0), (0,0,255), (0,255,255), (127,80,80), (55,80,127)]
-colourno = 0
-maxcolourno = 0
 rectm_xdir = [1,0,-1,0]
 rectm_ydir = [0,1,0,-1]
+l,t,w,h = 25,25,150,150
+rectm = pygame.Rect(l,t,w,h)
+colourno = 0
+maxcolourno = 0
 rectm_colour = 0
 rectm_dir = 0
 rectm_speed = 1
@@ -39,7 +40,18 @@ while True:
               colourno += 1
               if (colourno > maxcolourno):
                 maxcolourno = colourno
-
+                
+    keys = pygame.key.get_pressed()
+    if keys[114] == 1: #Restart if key r pressed
+      l,t,w,h = 25,25,150,150
+      del rectm  
+      rectm = pygame.Rect(l,t,w,h)
+      colourno = 0
+      maxcolourno = 0
+      rectm_colour = 0
+      rectm_dir = 0
+      rectm_speed = 1
+    
     # Do logical updates here.
     # ...
 
